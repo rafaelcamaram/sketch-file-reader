@@ -4,12 +4,13 @@ const sketchFile = require('sketch-file');
 
 const app = express();
 
-app.set('port', 3000);
+const PORT = process.env.PORT || 3004;
+app.set('port', PORT);
 
 app.use(bodyParser.json());
 
-app.listen(3002, () => {
-  console.log(`Servidor rodando na porta ${3000}`);
+app.listen(PORT, () => {
+  console.log(`Servidor rodando na porta ${PORT}`);
 });
 
 app.get('/document', async (req, res) => {
