@@ -1,4 +1,5 @@
 const express = require('express');
+const cors = require('cors');
 const bodyParser = require('body-parser');
 const sketchFile = require('sketch-file');
 
@@ -6,7 +7,14 @@ const app = express();
 
 const PORT = process.env.PORT || 3004;
 app.set('port', PORT);
-
+app.use(
+  cors({
+    origin: '*',
+    methods: 'GET,POST,PUT,PATCH,DELETE,OPTIONS',
+    preflightContinue: false,
+    optionsSuccessStatus: 204,
+  })
+);
 app.use(bodyParser.json());
 
 app.listen(PORT, () => {
